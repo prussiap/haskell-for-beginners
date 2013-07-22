@@ -7,6 +7,9 @@
 -- Write a function to find the longest word in a sentence.
 --
 
+import Data.List
 
 sentence =  "Don't use a big word where a diminutive word will suffice"
+
+longWord = maximumBy (compare `on` length) . word`
 

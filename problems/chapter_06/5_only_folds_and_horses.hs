@@ -2,18 +2,21 @@
 
 -- Define a function that determines to total area of a list of rectangles
 totalArea :: (Num a) => [(a,a)] -> a
-totalArea = undefined
+totalArea myrect = foldl (+) 0 (map area myrect)
+      where area (l,w) = l* w
 
 -- Define a function that finds the dimensions of a rectangle that will
 -- encompass every rectangle in a list (individually, not at all the same
 -- time)
+-- WHAT IS THE QUESTION ?
 encompass :: (Ord a) => [(a,a)] -> (a,a)
-encompass = undefined
+encompass = foldl1 expand
+    where expand (l1,w1) (l2,w2) = (max l1 l2, max w1 w2)
 
 -- Define a function that determines the total magnitude (abs) of
 -- multiples of 3 in a list. Do so only via fold, not using map or filter.
 amountOfFizz :: [Integer] -> Integer
-amountOfFizz = undefined
+amountOfFizz = d
 
 -- Define a function that determines if any rectangle in
 -- a given list is big. A rectangle is big if its area is greater than 100.

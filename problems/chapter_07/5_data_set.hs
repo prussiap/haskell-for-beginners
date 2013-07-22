@@ -4,7 +4,9 @@
 -- See the url below for the list of functions in Data.Set
 --   http://www.haskell.org/ghc/docs/7.6-latest/html/libraries/containers-0.5.0.0/Data-Set.html
 --
-
+import qualified Data.Set as S
+import Data.List (foldl')
+import Data.Char (isLetter)
 -- Find the set of all letters that appear in Sonnet CXXX.
 -- Find the set of all letters that do not appear in the sonnet.
 -- Find the set of all letters that appear on every line of the sonnet.
@@ -24,4 +26,8 @@ sonnetCXXX =
  "My mistress, when she walks, treads on the ground:\n" ++
  "   And yet by heaven, I think my love as rare,\n" ++
  "   As any she belied with false compare."
+lineSet :: [S.Set Char]
+lineSet = S.fromList $ filterLetters sonnetCXXX
 
+filterLetters :: [Char] -> [Char]
+filterLetters = filter isLetter
